@@ -7,23 +7,7 @@
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
-	"features": {
-		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
-			"enableNonRootDocker": "true",
-			"moby": "true"
-		},
-		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
-			"version": "latest",
-			"helm": "latest",
-			"minikube": "none"
-		},
-		"./local-features/copy-kube-config": {}
-	},
-	"remoteEnv": {
-		"SYNC_LOCALHOST_KUBECONFIG": "true"
-	},
-  // Configure tool-specific properties.
-	// "customizations": {},
+
 	// Configure tool-specific properties.
 	"customizations": {
 		// Configure properties specific to VS Code.
@@ -34,22 +18,17 @@
 			]
 		}
 	},
-	"initializeCommand": "cd .devcontainer && bash ensure-mount-sources",  
-	"mounts": [
-		{
-			"source": "${env:HOME}${env:USERPROFILE}/.kube",
-			"target": "/usr/local/share/kube-localhost",
-			"type": "bind"
-		},
-		// Optional mount to also sync certs in your .minikube folder
-		{
-			"source": "${env:HOME}${env:USERPROFILE}/.minikube",
-			"target": "/usr/local/share/minikube-localhost",
-			"type": "bind"
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [8000],
+
+	// Use 'portsAttributes' to set default properties for specific forwarded ports. More info: https://code.visualstudio.com/docs/remote/devcontainerjson-reference.
+	"portsAttributes": {
+		"8000": {
+			"label": "Hello Remote World",
+			"onAutoForward": "notify"
 		}
-	],
-  // Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [8080]
+	}
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "sudo chmod a+x \"$(pwd)\" && sudo rm -rf /var/www/html && sudo ln -s \"$(pwd)\" /var/www/html"

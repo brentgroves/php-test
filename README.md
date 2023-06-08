@@ -21,6 +21,7 @@ Add a breakpoint (e.g. on line 4).
 Press F5 to launch the app in the container.
 Once the breakpoint is hit, try hovering over variables, examining locals, and more.
 Running a server:
+php -S 0.0.0.0:8080
 
 From the terminal, run php -S 0.0.0.0:8000
 Click "Open in Browser" in the notification that appears to access the web app on this new port.
